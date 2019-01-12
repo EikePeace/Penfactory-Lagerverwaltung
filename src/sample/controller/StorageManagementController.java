@@ -2,6 +2,7 @@ package sample.controller;
 
 import javafx.collections.FXCollections;
 import sample.Main;
+import sample.model.ImExport;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -73,6 +74,7 @@ public class StorageManagementController {
     }
 
     public void Add(){
+        export();
         Main.data = FXCollections.observableArrayList();
         for (int i = 0; i < Main.array_anz.length; i++) {
             if (Main.array_pla[i] != 0) {
@@ -86,6 +88,7 @@ public class StorageManagementController {
     }
 
     public void Update(){
+        export();
         Main.data = FXCollections.observableArrayList();
         for (int i = 0; i < Main.array_anz.length; i++) {
             if (Main.array_pla[i] != 0) {
@@ -106,5 +109,10 @@ public class StorageManagementController {
         AnzahlTable.setCellValueFactory(new PropertyValueFactory<Article, Integer>("anzahl"));
         KategorieTable.setCellValueFactory(new PropertyValueFactory<Article, String>("kategorie"));
         StorageTable.setItems(Main.data);
+    }
+
+    public void export(){
+        ImExport IO = new ImExport();
+        IO.ExportFunktion(Main.array_anz,Main.array_bez,Main.array_kat,Main.array_gew,Main.array_pre,Main.array_pla, "datafile.txt");
     }
 }
