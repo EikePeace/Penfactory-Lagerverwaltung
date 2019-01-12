@@ -51,7 +51,7 @@ public class StorageManagementController {
                 Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_anz[i], Main.array_kat[i]));
             }
             else{
-                break;
+                i++;
             }
         }
         //Daten werden angezeigt
@@ -65,7 +65,7 @@ public class StorageManagementController {
                 Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_anz[i], Main.array_kat[i]));
             }
             else{
-                break;
+                i++; ;
             }
         }
         populate();
@@ -79,7 +79,7 @@ public class StorageManagementController {
                 Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_anz[i], Main.array_kat[i]));
             }
             else{
-                break;
+                i++; ;
             }
         }
         populate();
@@ -92,7 +92,7 @@ public class StorageManagementController {
                 Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_anz[i], Main.array_kat[i]));
             }
             else{
-                break;
+                i++; ;
             }
         }
         populate();
