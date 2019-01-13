@@ -51,6 +51,7 @@ public class StorageManagementController {
     private TableColumn<Article, Double> PreisTable;
 
 
+
     //Alle Artikel anzeigen
     public void showAll() {
 
@@ -69,20 +70,418 @@ public class StorageManagementController {
     }
 
     public void search() {
-        if (ArtikelbezeichnungTxt.getText() != "" && LagernummerTxt.getText() != "" && GewichtTxt.getText() != "" && KategorieTxt.getText() != "" && PreisTxt.getText() !=""){
-            Main.data = FXCollections.observableArrayList();
-            for (int i = 0; i < Main.array_anz.length; i++) {
-                if (Main.array_gew[i] != 0 && Main.array_bez[i] == ArtikelbezeichnungTxt.getText() && Main.array_pla[i] == Integer.parseInt(LagernummerTxt.getText())
-                        && Main.array_gew[i] == Integer.parseInt(GewichtTxt.getText()) && Main.array_kat[i] == KategorieTxt.getText()&& Main.array_pre[i] == Integer.parseInt(PreisTxt.getText())) {
-                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
-                } else {
-                    i++;
+        String bezSearch = ArtikelbezeichnungTxt.getText();
+        int plaSearch = Integer.parseInt(LagernummerTxt.getText());
+        double gewSearch = 0.0;
+        if (GewichtTxt.getText() !="") {
+            gewSearch = Double.parseDouble(GewichtTxt.getText());
+        }
+        String katSearch = KategorieTxt.getText();
+        double preSearch = 0.0;
+        if (PreisTxt.getText() !="") {
+            preSearch = Double.parseDouble(PreisTxt.getText());
+        }
+
+        if (bezSearch != ("")){
+            if (Integer.toString(plaSearch) != "") {
+                if (GewichtTxt.getText() != "") {
+                    if (katSearch != "") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && bezSearch.equals(Main.array_bez[i])
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && katSearch.equals(Main.array_kat[i])
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    if (katSearch!="") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_kat[i] == katSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pla[i] == plaSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                if (GewichtTxt.getText() != "") {
+                    if (katSearch!="") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_kat[i] == katSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_gew[i] == gewSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    if (katSearch!="") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_kat[i] == katSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_bez[i] == bezSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            if (Integer.toString(plaSearch) !="") {
+                if (GewichtTxt.getText() != "") {
+                    if (katSearch!="") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_kat[i] == katSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_gew[i] == gewSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    if (katSearch!="") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_kat[i] == katSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pla[i] == plaSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                if (GewichtTxt.getText() != "") {
+                    if (katSearch!="") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_kat[i] == katSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_gew[i] == gewSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_gew[i] == gewSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    if (katSearch!="") {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_kat[i] == katSearch
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_kat[i] == katSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        if (PreisTxt.getText() != "") {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0
+                                        && Main.array_pre[i] == preSearch) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                        else {
+                            Main.data = FXCollections.observableArrayList();
+                            for (int i = 0; i < Main.array_anz.length; i++) {
+                                if (Main.array_gew[i] != 0) {
+                                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
         populate();
-
     }
+
+
 
     public void add() {
         // Artikel wird hinzugefügt, falls alle Eingabefelder gültige Eingaben enthalten sobald auch nur eine Eingabe ungültig ist, wird eine Fehlermeldung ausgegeben
