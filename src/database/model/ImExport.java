@@ -1,4 +1,4 @@
-package sample.model;
+package database.model;
 
 import java.io.*;
 import java.util.Locale;

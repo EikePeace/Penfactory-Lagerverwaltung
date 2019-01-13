@@ -1,14 +1,14 @@
-package sample.controller;
+package database.controller;
 
 import javafx.collections.FXCollections;
-import sample.Main;
-import sample.model.ImExport;
+import database.Main;
+import database.model.ImExport;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.model.Article;
+import database.model.Article;
 
 public class StorageManagementController {
 
@@ -58,7 +58,7 @@ public class StorageManagementController {
         Main.data = FXCollections.observableArrayList();
         //Neue Daten werden aufgrund der gewünschten Operation geladen
         for (int i = 0; i < Main.array_anz.length; i++) {
-            if (Main.array_pla[i] != 0) {
+            if (Main.array_gew[i] != 0) {
                 Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
             } else {
                 i++;
@@ -69,13 +69,15 @@ public class StorageManagementController {
     }
 
     public void search() {
-        Main.data = FXCollections.observableArrayList();
-        for (int i = 0; i < Main.array_anz.length; i++) {
-            if (Main.array_pla[i] != 0) {
-                Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
-            } else {
-                i++;
-                ;
+        if (ArtikelbezeichnungTxt.getText() != "" && LagernummerTxt.getText() != "" && GewichtTxt.getText() != "" && KategorieTxt.getText() != "" && PreisTxt.getText() !=""){
+            Main.data = FXCollections.observableArrayList();
+            for (int i = 0; i < Main.array_anz.length; i++) {
+                if (Main.array_gew[i] != 0 && Main.array_bez[i] == ArtikelbezeichnungTxt.getText() && Main.array_pla[i] == Integer.parseInt(LagernummerTxt.getText())
+                        && Main.array_gew[i] == Integer.parseInt(GewichtTxt.getText()) && Main.array_kat[i] == KategorieTxt.getText()&& Main.array_pre[i] == Integer.parseInt(PreisTxt.getText())) {
+                    Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
+                } else {
+                    i++;
+                }
             }
         }
         populate();
@@ -129,7 +131,7 @@ public class StorageManagementController {
         }
         Main.data = FXCollections.observableArrayList();
         for (int i = 0; i < Main.array_anz.length; i++) {
-            if (Main.array_pla[i] != 0) {
+            if (Main.array_gew[i] != 0) {
                 Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
             } else {
                 i++;
@@ -165,7 +167,7 @@ public class StorageManagementController {
 
         Main.data = FXCollections.observableArrayList();
         for (int i = 0; i < Main.array_anz.length; i++) {
-            if (Main.array_pla[i] != 0) {
+            if (Main.array_gew[i] != 0) {
                 Main.data.add(new Article(Main.array_bez[i], Main.array_pla[i], Main.array_gew[i], Main.array_pre[i], Main.array_anz[i], Main.array_kat[i]));
             } else {
                 i++;
@@ -187,7 +189,7 @@ public class StorageManagementController {
 
     public void export() {
         ImExport IO = new ImExport();
-        IO.ExportFunktion(Main.array_anz, Main.array_bez, Main.array_kat, Main.array_gew, Main.array_pre, Main.array_pla, "datafile.txt");
+            IO.ExportFunktion(Main.array_anz, Main.array_bez, Main.array_kat, Main.array_gew, Main.array_pre, Main.array_pla, "C:\\Database\\Testfile.txt");
     }
 
     // konvertiere die Platznummer-Eingabe in Integerwert > 0 falls möglich, sonst ungültige Eingabe

@@ -1,4 +1,4 @@
-package sample.model;
+package database.model;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;

@@ -1,4 +1,4 @@
-package sample;
+package database;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -8,8 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sample.model.Article;
-import sample.model.ImExport;
+import database.model.Article;
+import database.model.ImExport;
 
 import java.io.IOException;
 public class Main extends Application {
@@ -78,7 +78,7 @@ public class Main extends Application {
         array_pla = new int[size];
         //Fetching der Import/ExportFunktion
         ImExport IO = new ImExport();
-        IO.ImportFunktion(array_anz,array_bez,array_kat,array_gew,array_pre,array_pla, "datafile.txt");
+        IO.ImportFunktion(array_anz,array_bez,array_kat,array_gew,array_pre,array_pla, "C:\\Database\\Testfile.txt");
         launch(args);
 
     }

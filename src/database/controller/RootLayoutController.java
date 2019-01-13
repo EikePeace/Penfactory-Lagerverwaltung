@@ -1,4 +1,4 @@
-package sample.controller;
+package database.controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 public class RootLayoutController {
