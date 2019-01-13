@@ -8,13 +8,15 @@ public class Article {
     private final SimpleStringProperty artikelbezeichnung;
     private final SimpleIntegerProperty lagernummer;
     private final SimpleDoubleProperty gewicht;
+    private final SimpleDoubleProperty preis;
     private final SimpleIntegerProperty anzahl;
     private final SimpleStringProperty kategorie;
 
-    public Article(String bez, int pla, double gew, int anz, String kat){
+    public Article(String bez, int pla, double gew, double pre, int anz, String kat){
         this.artikelbezeichnung = new SimpleStringProperty(bez);
         this.lagernummer = new SimpleIntegerProperty(pla);
         this.gewicht = new SimpleDoubleProperty(gew);
+        this.preis = new SimpleDoubleProperty(pre);
         this.anzahl = new SimpleIntegerProperty(anz);
         this.kategorie = new SimpleStringProperty(kat);
     }
@@ -40,6 +42,13 @@ public class Article {
         gewicht.set(gew);
     }
 
+    public double  getPreis() {
+        return preis.get();
+    }
+    public void setPreis(double pre) {
+        preis.set(pre);
+    }
+
     public int  getAnzahl() {
         return anzahl.get();
     }
@@ -48,7 +57,7 @@ public class Article {
     }
 
     public String getKategorie() {
-        return artikelbezeichnung.get();
+        return kategorie.get();
     }
     public void setKategorie(String kat) {
         kategorie.set(kat);

@@ -1,7 +1,6 @@
 package sample.controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
-import sample.Main;
 public class RootLayoutController {
     //Help Menu button behavior
     public void handleHelp(ActionEvent actionEvent) {

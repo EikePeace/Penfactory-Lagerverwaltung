@@ -1,24 +1,20 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sample.controller.StorageManagementController;
 import sample.model.Article;
 import sample.model.ImExport;
 
 import java.io.IOException;
 public class Main extends Application {
-    public static ObservableList<Article> data = FXCollections.observableArrayList(
-    );
+
+    public static ObservableList<Article> data = FXCollections.observableArrayList();
     public static int[] array_anz;
     public static String[] array_bez;
     public static String[] array_kat;

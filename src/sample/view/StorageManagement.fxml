@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -7,33 +10,39 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="704.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.StorageManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="704.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.StorageManagementController">
    <children>
-      <TextField fx:id="ArtikelbezeichnungTxt" layoutX="57.0" layoutY="37.0" promptText="Artikelbezeichnung" />
-      <Label layoutX="80.0" layoutY="14.0" text="Artikelbezeichnung" />
-      <Label layoutX="338.0" layoutY="14.0" text="Lagernummer" />
-      <TextField fx:id="LagernummerTxt" layoutX="301.0" layoutY="37.0" promptText="Lagernummer" />
-      <Label layoutX="541.0" layoutY="14.0" text="Gewicht in Gramm" />
-      <TextField fx:id="KategorieTxt" layoutX="301.0" layoutY="133.0" promptText="Kategorie" />
-      <TextField fx:id="GewichtTxt" layoutX="515.0" layoutY="37.0" promptText="Gewicht" />
-      <Label layoutX="350.0" layoutY="111.0" text="Kategorie" />
-      <Button layoutX="104.0" layoutY="70.0" mnemonicParsing="false" onAction="#Search" text="Suchen" />
-      <Button layoutX="74.0" layoutY="217.0" mnemonicParsing="false" onAction="#Add" text="Artikel Hinzufügen" />
-      <Button layoutX="329.0" layoutY="217.0" mnemonicParsing="false" onAction="#Update" text="Artikel Ändern" />
-      <Button layoutX="348.0" layoutY="70.0" mnemonicParsing="false" onAction="#Search" text="Suchen" />
-      <Button layoutX="562.0" layoutY="70.0" mnemonicParsing="false" onAction="#Search" text="Suchen" />
-      <Button layoutX="348.0" layoutY="164.0" mnemonicParsing="false" onAction="#Search" text="Suchen" />
-      <Button layoutX="527.0" layoutY="217.0" mnemonicParsing="false" onAction="#showAll" text="Alle Artikel anzeigen" />
-      <TableView fx:id="StorageTable" layoutX="24.0" layoutY="257.0" prefHeight="220.0" prefWidth="656.0">
+
+       <Label layoutX="80.0" layoutY="14.0" text="Artikelbezeichnung" />
+       <Label layoutX="338.0" layoutY="14.0" text="Lagernummer" />
+       <Label layoutX="541.0" layoutY="14.0" text="Gewicht in Gramm" />
+       <Label layoutX="114.0" layoutY="111.0" text="Anzahl" />
+       <Label layoutX="350.0" layoutY="111.0" text="Kategorie" />
+       <Label layoutX="577.0" layoutY="111.0" text="Preis" />
+       <TextField fx:id="ArtikelbezeichnungTxt" layoutX="57.0" layoutY="37.0" promptText="Artikelbezeichnung" />
+       <TextField fx:id="LagernummerTxt" layoutX="301.0" layoutY="37.0" promptText="Lagernummer" />
+       <TextField fx:id="GewichtTxt" layoutX="515.0" layoutY="37.0" promptText="Gewicht" />
+       <TextField fx:id="AnzahlTxt" layoutX="57.0" layoutY="133.0" promptText="Anzahl" />
+       <TextField fx:id="KategorieTxt" layoutX="301.0" layoutY="133.0" promptText="Kategorie" />
+       <TextField fx:id="PreisTxt" layoutX="515.0" layoutY="133.0" promptText="Preis" />
+       <Button layoutX="104.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" text="Suchen" />
+       <Button layoutX="348.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" text="Suchen" />
+       <Button layoutX="562.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" text="Suchen" />
+       <Button layoutX="348.0" layoutY="164.0" mnemonicParsing="false" onAction="#search" text="Suchen" />
+       <Button layoutX="563.0" layoutY="164.0" mnemonicParsing="false" onAction="#search" text="Suchen" />
+       <Button layoutX="74.0" layoutY="217.0" mnemonicParsing="false" onAction="#add" text="Artikel Hinzufügen" />
+       <Button layoutX="253.0" layoutY="217.0" mnemonicParsing="false" onAction="#delete" text="Artikel Löschen" />
+       <Button layoutX="376.0" layoutY="217.0" mnemonicParsing="false" onAction="#update" text="Artikel Ändern" />
+       <Button layoutX="527.0" layoutY="217.0" mnemonicParsing="false" onAction="#showAll" text="Alle Artikel anzeigen" />
+       <TableView fx:id="StorageTable" layoutX="24.0" layoutY="257.0" prefHeight="220.0" prefWidth="656.0">
           <columns>
             <TableColumn fx:id="ArtikelbezeichnungTable" editable="false" prefWidth="122.0" text="Artikelbezeichnung" />
             <TableColumn fx:id="LagernummerTable" editable="false" prefWidth="98.0" text="Lagernummer" />
             <TableColumn fx:id="GewichtTable" editable="false" prefWidth="128.0" text="Gewicht in Gramm" />
             <TableColumn fx:id="KategorieTable" editable="false" prefWidth="106.0" text="Kategorie" />
-            <TableColumn fx:id="AnzahlTable" editable="false" prefWidth="218.0" text="Anzahl" />
+            <TableColumn fx:id="PreisTable" editable="false" prefWidth="86.0" text="Preis" />
+            <TableColumn fx:id="AnzahlTable" editable="false" prefWidth="115.0" text="Anzahl" />
         </columns>
       </TableView>
-      <Label layoutX="114.0" layoutY="111.0" text="Anzahl" />
-      <TextField fx:id="AnzahlTxt" layoutX="57.0" layoutY="133.0" promptText="Anzahl" />
    </children>
 </AnchorPane>
