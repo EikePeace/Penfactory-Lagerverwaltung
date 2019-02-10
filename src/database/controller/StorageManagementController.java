@@ -12,43 +12,43 @@ import database.model.Article;
 
 public class StorageManagementController {
 
-    static String PruefString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    int PlatzNr = 0;
-    int MaxPlatzNr = 0;
-    boolean NameVergeben = false;
-    int NameVergebenPlatzNr = 0;
-    boolean Aenderung = false;
+    static  String PruefString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    static int  PlatzNr = 0;
+    static int MaxPlatzNr = 0;
+    static boolean NameVergeben = false;
+    static int NameVergebenPlatzNr = 0;
+    static boolean Aenderung = false;
 
     //Zugriff auf die Textfelder
     @FXML
-    private TextField ArtikelbezeichnungTxt;
+    private static TextField ArtikelbezeichnungTxt;
     @FXML
-    private TextField LagernummerTxt;
+    private static TextField LagernummerTxt;
     @FXML
-    private TextField GewichtTxt;
+    private static TextField GewichtTxt;
     @FXML
-    private TextField AnzahlTxt;
+    private static TextField AnzahlTxt;
     @FXML
-    private TextField KategorieTxt;
+    private static TextField KategorieTxt;
     @FXML
-    private TextField PreisTxt;
+    private static TextField PreisTxt;
 
 
     //Zugriff auf die Tabelle
     @FXML
-    private TableView StorageTable;
+    private static TableView StorageTable;
     @FXML
-    private TableColumn<Article, String> ArtikelbezeichnungTable;
+    private static TableColumn<Article, String> ArtikelbezeichnungTable;
     @FXML
-    private TableColumn<Article, Integer> LagernummerTable;
+    private static TableColumn<Article, Integer> LagernummerTable;
     @FXML
-    private TableColumn<Article, Double> GewichtTable;
+    private static TableColumn<Article, Double> GewichtTable;
     @FXML
-    private TableColumn<Article, String> KategorieTable;
+    private static TableColumn<Article, String> KategorieTable;
     @FXML
-    private TableColumn<Article, Integer> AnzahlTable;
+    private static TableColumn<Article, Integer> AnzahlTable;
     @FXML
-    private TableColumn<Article, Double> PreisTable;
+    private static TableColumn<Article, Double> PreisTable;
 
 
 
@@ -69,7 +69,7 @@ public class StorageManagementController {
         populate();
     }
 
-    public void search() {
+    public static void search() {
         String bezSearch = ArtikelbezeichnungTxt.getText();
         int plaSearch = Integer.parseInt(LagernummerTxt.getText());
         double gewSearch = 0.0;
@@ -483,7 +483,7 @@ public class StorageManagementController {
 
 
 
-    public void add() {
+    public static void add() {
         // Artikel wird hinzugefügt, falls alle Eingabefelder gültige Eingaben enthalten sobald auch nur eine Eingabe ungültig ist, wird eine Fehlermeldung ausgegeben
         if (PlatznummerPruefung(LagernummerTxt.getText()) && StueckzahlPruefung(AnzahlTxt.getText()) &&
                 PreisPruefung(PreisTxt.getText()) && GewichtPruefung(GewichtTxt.getText()) && NamePruefung(ArtikelbezeichnungTxt.getText())) {
@@ -575,7 +575,7 @@ public class StorageManagementController {
         populate();
     }
 
-    private void populate() {
+    private static void populate() {
         ArtikelbezeichnungTable.setCellValueFactory(new PropertyValueFactory<Article, String>("artikelbezeichnung"));
         LagernummerTable.setCellValueFactory(new PropertyValueFactory<Article, Integer>("lagernummer"));
         GewichtTable.setCellValueFactory(new PropertyValueFactory<Article, Double>("gewicht"));
@@ -586,7 +586,7 @@ public class StorageManagementController {
         export();
     }
 
-    public void export() {
+    public static void export() {
         ImExport IO = new ImExport();
             IO.ExportFunktion(Main.array_anz, Main.array_bez, Main.array_kat, Main.array_gew, Main.array_pre, Main.array_pla, "C:\\Database\\Testfile.txt");
     }
